@@ -1,0 +1,54 @@
+:root{
+}
+
+html, body{
+    background-color: #ffffff;
+    /* background-color: var(--background-color);
+    color: var(--color); */
+    width: 100%;
+    height: auto;
+    font-family: 'Rubik', sans-serif;
+    letter-spacing: -.015em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variation-settings: "wght" 500,"wdth" 100;
+    font-weight: unset;
+    font-size: 1em;
+    transition: .25s;
+    margin: 0;
+    overflow: hidden;
+}
+.canvas {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.intro-wrapper{
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.intro-title{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.outline{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.2px;
+}
+
+.intro-role{
+    font-size: 1em;
+}
