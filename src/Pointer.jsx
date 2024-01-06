@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { BallCollider, RigidBody } from '@react-three/rapier'
 import { useFrame } from '@react-three/fiber';
 
+
 export default function Pointer({ vec = new THREE.Vector3() })
 {
     const pointer = useRef()
@@ -13,7 +14,7 @@ export default function Pointer({ vec = new THREE.Vector3() })
 
     return (
       <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={pointer} >
-        <BallCollider args={[0.25]} />
+        <BallCollider args={[1]} />
       </RigidBody>
     )
 }

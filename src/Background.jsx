@@ -1,6 +1,6 @@
 import { EffectComposer, ToneMapping, Bloom, Noise } from '@react-three/postprocessing'
 import { useFrame } from '@react-three/fiber';
-import { GradientTexture, OrbitControls } from '@react-three/drei'
+import { GradientTexture, OrbitControls, Sky, Stars } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import { useRef, useState, useEffect } from 'react'
 import { useControls } from 'leva'
@@ -62,21 +62,23 @@ export default function Background()
     return <>
         {/* <OrbitControls> */}
         {/* <Perf position="top-left" /> */}
+        <Stars />
 
         <directionalLight castShadow position={ [ 1, 2, 3 ] } intensity={ 4.5 } />
         <ambientLight intensity={ 1.5 } />
 
-        {/* <EffectComposer disableNormalPass multisampling={8}>
+        <EffectComposer disableNormalPass multisampling={8}>
             <Bloom 
                 luminanceThreshold={ 0 } 
                 mipmapBlur
                 intensity={ 0.3 }
             />
-            <ToneMapping />
-        </EffectComposer> */}
+            {/* <ToneMapping /> */}
+            <Noise opacity={ 0.4 } />
+        </EffectComposer>
 
 
-        {[...Array(69)].map((value, index) => 
+        {[...Array(150)].map((value, index) => 
             <RigidBody
                 ref={ (element) => {balls.current[index] = element} }
                 key={ index }  
@@ -91,7 +93,7 @@ export default function Background()
                     geometry={ ballGeometry }
                     scale={ 0.3 + Math.random() * 0.5 }
                 >
-                    <meshPhongMaterial shininess={ 100 } color={ballColors[Math.floor(Math.random() * ballColors.length)]} emissive="#ffffff" emissiveIntensity={ 0.01 } toneMapped={false} />
+                    <meshPhongMaterial shininess={ 100 } color={ballColors[Math.floor(Math.random() * ballColors.length)]} emissive="#000000" emissiveIntensity={ 0.2 } toneMapped={false} />
                 </mesh>
             </RigidBody>
 
