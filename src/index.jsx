@@ -1,8 +1,13 @@
 import './style.css'
 import { createRoot } from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
-import IntroText from './IntroText'
-import Background from './Background'
+import { Suspense } from 'react'
+import { CuboidCollider, BallCollider, Physics, RigidBody } from '@react-three/rapier'
+import IntroText from './IntroText.jsx'
+import Background from './Background.jsx'
+import Pointer from './Pointer.jsx'
+import { Html } from '@react-three/drei'
+
 
 const root = createRoot(document.querySelector('#root'))
 
@@ -10,7 +15,15 @@ root.render(
     <>  
         <div className="canvas">
             <Canvas orthographic camera={{ zoom: 100, position: [0, 0, 100] }}>
-                <Background />
+                <color attach="background" args={["#E3E2D6"]} />
+                <Suspense>
+                    <Physics 
+                        gravity={[0, 0, 0]} 
+                    >
+                        <Pointer />
+                        <Background />
+                    </Physics>
+                </Suspense>
             </Canvas>
         </div>
        

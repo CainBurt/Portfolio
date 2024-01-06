@@ -1,81 +1,102 @@
-import {DepthOfField, EffectComposer, ToneMapping } from '@react-three/postprocessing'
+import { EffectComposer, ToneMapping, Bloom, Noise } from '@react-three/postprocessing'
 import { useFrame } from '@react-three/fiber';
-import { OrbitControls, GradientTexture } from '@react-three/drei'
+import { GradientTexture, OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useControls } from 'leva'
 import * as THREE from 'three'
+import { RigidBody } from '@react-three/rapier'
+
 
 const ballGeometry = new THREE.SphereGeometry()
-// const ballColors = ['#E3FDFD', '#CBF1F5', '#A6E3E9', '#71C9CE']
-const ballColors = ['#0079FF', '#00DFA2', '#F6FA70', '#FF0060']
+const ballColors = ['#00a3e2', '#1ba548', '#fdc800', '#f1860e', '#e41b13']
+// const ballColors = ['#0079FF', '#00DFA2', '#F6FA70', '#FF0060']
 
 export default function Background()
 {
+    const vec = new THREE.Vector3()
     const balls = useRef([])
+    const initialPositions = useRef([]);
+
+    // Set up initial positions on mount
+    useEffect(() => {
+        balls.current.forEach((ball, index) => {
+        initialPositions.current[index] = ball.translation();
+        });
+    }, []);
 
     useFrame((state, delta) => {
-
-        balls.current.forEach((ball) => {
-            const time = state.clock.getElapsedTime();
-            const speed = 0.1; // Adjust the overall speed
-        
-            // Generate separate random values for each axis
-            const randomX = Math.random() * 0.1 - 0.05;
-            const randomY = Math.random() * 0.1 - 0.05;
-            const randomZ = Math.random() * 0.1 - 0.05;
-        
-            // Calculate new positions for each axis
-            const x = ball.position.x + Math.cos(time * speed + randomX) * 0.001;
-            const y = ball.position.y + Math.sin(time * speed + randomY) * 0.001;
-            const z = ball.position.z + Math.sin(time * speed + randomZ) * 0.001;
-        
-            // Set the new position
-            ball.position.set(x, y, z);
-          });
-    })
+        delta = Math.min(0.1, delta);
+        const scale = 0.01;
+    
+        balls.current.forEach((ball, index) => {
+            const initialPosition = initialPositions.current[index];
+    
+            const direction = vec
+                .copy(ball.translation())
+                .sub(initialPosition)
+                .normalize();
+    
+            const gravityForce = direction.multiplyScalar(-200 * delta * scale);
+            
+            // Apply gravity force
+            ball.applyImpulse(gravityForce);
+    
+            // Apply linear damping
+            const linearDampingFactor = 0.99;
+            const linearVel = vec.copy(ball.linvel()).multiplyScalar(linearDampingFactor);
+            ball.setLinvel(linearVel.clampScalar(-2, 2));
+    
+            // Apply angular damping
+            const angularDampingFactor = 0.5;
+            const angularVel = vec.copy(ball.angvel()).multiplyScalar(angularDampingFactor);
+            ball.setAngvel(angularVel.clampScalar(-2, 2));
+            
+        });
+    });
+    
+    
+    
+    
 
     return <>
+        {/* <OrbitControls> */}
         {/* <Perf position="top-left" /> */}
-        {/* <OrbitControls makeDefault /> */}
 
         <directionalLight castShadow position={ [ 1, 2, 3 ] } intensity={ 4.5 } />
         <ambientLight intensity={ 1.5 } />
 
-        <EffectComposer disableNormalPass>
-            <DepthOfField 
-                focusDistance={ 0.025 }
-                focalLength={ 0.025 }
-                bokehScale={ 6 }
-            /> 
-            <ToneMapping/>
-        </EffectComposer>
-
-        <color args={ [ '#ffffff' ] } attach='background' />
+        {/* <EffectComposer disableNormalPass multisampling={8}>
+            <Bloom 
+                luminanceThreshold={ 0 } 
+                mipmapBlur
+                intensity={ 0.3 }
+            />
+            <ToneMapping />
+        </EffectComposer> */}
 
 
         {[...Array(69)].map((value, index) => 
-            <mesh
+            <RigidBody
                 ref={ (element) => {balls.current[index] = element} }
-                key={ index }
-                geometry={ ballGeometry }
+                key={ index }  
                 position={[
                     (Math.random() - 0.5) * 20,
                     (Math.random() - 0.5) * 10,
-                    (Math.random() - 0.5) * 10
+                    0
                 ]}
-                scale={ 0.2 + Math.random() * 0.5 }
-                onPointerOver={(e) => console.log('over')}
+                colliders="ball"
             >
-                {/* <meshStandardMaterial color={ballColors[Math.floor(Math.random() * ballColors.length)]} /> */}
-                <meshBasicMaterial>
-                    <GradientTexture
-                        stops={[0, 1]} 
-                        colors={[ballColors[Math.floor(Math.random() * ballColors.length)], ballColors[Math.floor(Math.random() * ballColors.length)]]} 
-                    />
-                </meshBasicMaterial>
-            </mesh>
+                <mesh
+                    geometry={ ballGeometry }
+                    scale={ 0.3 + Math.random() * 0.5 }
+                >
+                    <meshPhongMaterial shininess={ 100 } color={ballColors[Math.floor(Math.random() * ballColors.length)]} emissive="#ffffff" emissiveIntensity={ 0.01 } toneMapped={false} />
+                </mesh>
+            </RigidBody>
+
         )}
+
 
     </>
         
