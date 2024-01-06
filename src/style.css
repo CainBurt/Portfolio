@@ -2,7 +2,6 @@
 }
 
 html, body{
-    background-color: #ffffff;
     /* background-color: var(--background-color);
     color: var(--color); */
     width: 100%;
@@ -30,11 +29,12 @@ html, body{
 
 .intro-wrapper{
     height: 100vh;
-    justify-content: center;
-    margin: 0 auto;
+    width: 500px;
+    margin: auto;
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     text-align: center;
 }
