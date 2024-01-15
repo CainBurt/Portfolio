@@ -1,0 +1,126 @@
+:root{
+}
+
+html, body{
+    /* background-color: #ffffff; */
+    /* background-color: var(--background-color);
+    color: var(--color); */
+    width: 100%;
+    height: auto;
+    font-family: 'Rubik', sans-serif;
+    letter-spacing: -.015em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variation-settings: "wght" 500,"wdth" 100;
+    font-weight: unset;
+    font-size: 1em;
+    transition: .25s;
+    margin: 0;
+    overflow: hidden;
+}
+.canvas {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.intro-wrapper{
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    pointer-events: none;
+}
+
+.intro-title{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.outline{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.2px;
+}
+
+.intro-role{
+    font-size: 1em;
+}
+
+.visually-hidden{
+    display: none;
+}
+
+
+header{
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    position: fixed;
+    z-index: 5;
+    top: 96px;
+    left: 0;
+    right: 0;
+    .header-content{
+        z-index: inherit;
+        height: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+        padding: 0 88px 0 96px;
+        .left-part{
+            pointer-events: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            z-index: inherit;
+        }
+        .right-part{
+            pointer-events: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            z-index: inherit;
+            .hamburger-btn{
+                border: none;
+                background: none;
+                outline: none;
+                cursor: pointer;
+                font-size: 1rem;
+                color: #000000;
+                font: inherit;
+                font-variation-settings: "wght" 800,"wdth" 125;
+                padding: 0;
+            }
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            li{
+                margin-left: 24px;
+            }
+        }
+        svg{
+            opacity: 1;
+            fill: none;
+            stroke: #000000;
+            color: #000000;
+            stroke-width: 2px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-miterlimit: 10;
+            display: block;
+            font-size: 2rem;
+        }
+    }
+}
