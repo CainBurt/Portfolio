@@ -9,9 +9,15 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.1",
+    "sass": "^1.69.7",
     "vite": "^4.5.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-three/drei": "^9.92.7",
     "@react-three/fiber": "^8.15.13",
     "@react-three/postprocessing": "^2.15.11",
