@@ -15,7 +15,6 @@ root.render(
     
         <div className="canvas">
             <Canvas orthographic camera={{ zoom: 100, position: [0, 0, 100] }}>
-                <color attach="background" args={["#E0E0E6"]} />
                 <Suspense>
                     <Physics 
                         gravity={[0, 0, 0]} 
