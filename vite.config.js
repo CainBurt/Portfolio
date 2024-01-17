@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react'
 import { transformWithEsbuild } from 'vite'
+import svgr from "vite-plugin-svgr";
 
 export default {
     root: 'src/',
@@ -8,6 +9,7 @@ export default {
     plugins:
     [
         // React support
+        svgr(),
         react(),
 
         // .js file support as if it was JSX

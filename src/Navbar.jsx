@@ -1,5 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faMoon, faBars, faSun } from '@fortawesome/free-solid-svg-icons'
+import House from './assets/home.svg?react'
+import Moon from './assets/moon.svg?react'
+import Sun from './assets/sun.svg?react'
+import Menu from './assets/menu-navigation.svg?react'
+
 
 export default function Navbar() {
     let isLightMode = true;
@@ -20,7 +25,7 @@ export default function Navbar() {
                 <div className="logo">
                     <a href="/">
                         <span className="visually-hidden">Home</span>
-                        <FontAwesomeIcon icon={faHouse} />                    
+                        <House style={{ height: '40px' }}/>
                     </a>
                 </div>
                 <h5 className="full-identity" style={{display: "none", transform: "translateY(-100px) translateZ(0px)"}}>
@@ -32,17 +37,18 @@ export default function Navbar() {
                 <ul>
 
                     <li className="theme-switch" style={{display: "block", transform: "none",}}>
-                    <FontAwesomeIcon
-                        icon={isLightMode ? faMoon : faSun}
-                        onClick={() => (isLightMode ? setDarkMode() : setLightMode())} // Toggle theme based on the current theme
-                    />                           
+                     
+                        <Moon 
+                            onClick={() => (isLightMode ? setDarkMode() : setLightMode())}
+                        />
+
+                        
                     </li>
                     <li>
                         <button className="hamburger-btn" aria-label="Open menu">
                             <div style={{transform: "none"}}>
-                                <FontAwesomeIcon 
-                                    icon={faBars} 
-                                />                            
+                                <Menu/>
+                      
                             </div>
                         </button>
                     </li>
