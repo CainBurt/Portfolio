@@ -27,8 +27,8 @@ root.render(
                         gravity={[0, 0, 0]}
                     >
                         <Pointer />
-                        {/* <Background /> */}
-                        <BubbleBackground />
+                        <Background />
+                        {/* <BubbleBackground /> */}
                     </Physics>
                     {/* <IntroText position={[0, 0, -10]} /> */}
 
