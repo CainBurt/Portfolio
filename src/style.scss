@@ -1,6 +1,21 @@
+$body: #89c6af;
+$colors:#DB723B, #C04349, #A4334D, #784776;
+$stroke: #563e2e;
+
+@font-face {
+    font-family: 'Candice';
+    src: url('Candice.woff2') format('woff2'),
+        url('Candice.woff') format('woff'),
+        url('Candice.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root, html[data-theme='light']{
     --background-color: #ffffff;
     --text-color: #2b2b33;
+
 }
 html[data-theme='dark']{
     --background-color: #2b2b33;
@@ -36,6 +51,41 @@ html, body{
     height: 100vh;
 }
 
+@mixin retro-shadow($colors, $size:7) {
+    $counter: 0;
+    $text-shadow-posX: 0;
+    $text-shadow-posY: 0;
+    $text-shadow-value: null;
+  
+    @each $color in $colors {
+      @for $i from 0 to $size {
+        $counter: $counter + 1;
+        $pos: $counter * 0.01;
+        $posX: $pos + em;
+        $posY: $pos + em;
+  
+        $text-shadow-value: append($text-shadow-value, $posX $posY $color, comma);
+      }
+    }
+  
+    text-shadow: $text-shadow-value;
+  }
+  
+  .retro {
+    @include retro-shadow($colors);
+  }
+  
+  h1 {
+    // font-family: "Oleo Script Swash Caps", cursive;
+    // font-family: "Lobster", cursive;
+    // font-family: "Sansita Swashed", cursive;
+    // font-size: 96pt;
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #f6ce91;
+  }
+
 .intro-wrapper{
     height: 100dvh;
     justify-content: center;
@@ -48,19 +98,11 @@ html, body{
     pointer-events: none;
 }
 
-.intro-title{
-    font-size: 4rem;
-    text-transform: uppercase;
-    margin-bottom: 0;
-}
-
-.outline{
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.5px;
-}
-
 .intro-role{
-    font-size: 1em;
+    font-size: 2em;
+    font-family: 'Candice';
+    color: #f6ce91;
+    @include retro-shadow(#784776, 15);
 }
 
 .visually-hidden{

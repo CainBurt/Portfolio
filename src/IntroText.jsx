@@ -4,7 +4,7 @@ import { suspend } from "suspend-react"
 export default function IntroText(props)
 {
     return <div className="intro-wrapper">
-        <h1 className="intro-title" ><span className="outline">Hey, I'm </span>Cain Burt</h1>
+        <h1 className="retro">Hey, I'm Cain Burt</h1>
         <div className="intro-role" >Software Developer</div>
     </div>
     // return (
