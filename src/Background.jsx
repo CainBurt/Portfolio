@@ -74,7 +74,7 @@ export default function Background()
                 intensity={ 0.3 }
             />
             {/* <ToneMapping /> */}
-            <Noise opacity={ 0.4 } />
+            {/* <Noise opacity={ 0.4 } /> */}
         </EffectComposer>
 
 
