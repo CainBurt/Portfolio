@@ -17,7 +17,7 @@ const root = createRoot(document.querySelector('#root'))
 
 root.render(
     <>
-
+ 
         <div className="canvas">
             <Canvas
             // orthographic camera={{ zoom: 100, position: [0, 0, 100] }}
