@@ -4,9 +4,9 @@ $stroke: #563e2e;
 
 @font-face {
     font-family: 'Candice';
-    src: url('Candice.woff2') format('woff2'),
-        url('Candice.woff') format('woff'),
-        url('Candice.ttf') format('truetype');
+    src: url('../public/Candice.woff2') format('woff2'),
+        url('../public/Candice.woff') format('woff'),
+        url('../public/Candice.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
