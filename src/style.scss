@@ -1,28 +1,31 @@
 $body: #89c6af;
-$colors:#DB723B, #C04349, #A4334D, #784776;
+$colors: #DB723B, #C04349, #A4334D, #784776;
 $stroke: #563e2e;
 
 @font-face {
     font-family: 'Candice';
-    src: url('../public/Candice.woff2') format('woff2'),
-        url('../public/Candice.woff') format('woff'),
-        url('../public/Candice.ttf') format('truetype');
+    src: url('Candice.woff2') format('woff2'),
+        url('Candice.woff') format('woff'),
+        url('Candice.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
-:root, html[data-theme='light']{
-    --background-color: #ffffff;
+:root,
+html[data-theme='light'] {
+    --background-color: #B1674A;
     --text-color: #2b2b33;
 
 }
-html[data-theme='dark']{
+
+html[data-theme='dark'] {
     --background-color: #2b2b33;
     --text-color: #f3f2f9;
 }
 
-html, body{
+html,
+body {
     /* background-color: #ffffff; */
     /* background-color: var(--background-color);
     color: var(--color); */
@@ -32,16 +35,18 @@ html, body{
     letter-spacing: -.015em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-variation-settings: "wght" 500,"wdth" 100;
+    font-variation-settings: "wght" 500, "wdth" 100;
     font-weight: unset;
     font-size: 1em;
     transition: .25s;
     margin: 0;
-    overflow: hidden;
+    // overflow: hidden;
     background: var(--background-color);
     color: var(--text-color)
 }
-.canvas {
+
+.canvas,
+.background {
     z-index: 0;
     position: fixed;
     top: 0;
@@ -51,31 +56,63 @@ html, body{
     height: 100vh;
 }
 
-@mixin retro-shadow($colors, $size:7) {
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.out-top {
+    animation: rotate 20s linear infinite;
+    transform-origin: 13px 25px;
+}
+
+.in-top {
+    animation: rotate 10s linear infinite;
+    transform-origin: 13px 25px;
+}
+
+.out-bottom {
+    animation: rotate 25s linear infinite;
+    transform-origin: 84px 93px;
+}
+
+.in-bottom {
+    animation: rotate 15s linear infinite;
+    transform-origin: 84px 93px;
+}
+
+
+
+@mixin retro-shadow($colors, $size: 7) {
     $counter: 0;
     $text-shadow-posX: 0;
     $text-shadow-posY: 0;
     $text-shadow-value: null;
-  
+
     @each $color in $colors {
-      @for $i from 0 to $size {
-        $counter: $counter + 1;
-        $pos: $counter * 0.01;
-        $posX: $pos + em;
-        $posY: $pos + em;
-  
-        $text-shadow-value: append($text-shadow-value, $posX $posY $color, comma);
-      }
+        @for $i from 0 to $size {
+            $counter: $counter + 1;
+            $pos: $counter * 0.01;
+            $posX: $pos + em;
+            $posY: $pos + em;
+
+            $text-shadow-value: append($text-shadow-value, $posX $posY $color, comma);
+        }
     }
-  
+
     text-shadow: $text-shadow-value;
-  }
-  
-  .retro {
+}
+
+.retro {
     @include retro-shadow($colors);
-  }
-  
-  h1 {
+}
+
+h1 {
     // font-family: "Oleo Script Swash Caps", cursive;
     // font-family: "Lobster", cursive;
     // font-family: "Sansita Swashed", cursive;
@@ -84,9 +121,9 @@ html, body{
     text-transform: uppercase;
     margin-bottom: 1rem;
     color: #f6ce91;
-  }
+}
 
-.intro-wrapper{
+.intro-wrapper {
     height: 100dvh;
     justify-content: center;
     margin: 0 auto;
@@ -98,48 +135,52 @@ html, body{
     pointer-events: none;
 }
 
-.intro-role{
+.intro-role {
     font-size: 2em;
     font-family: 'Candice';
     color: #f6ce91;
     @include retro-shadow(#784776, 15);
 }
 
-.visually-hidden{
+.visually-hidden {
     display: none;
 }
 
 
-header{
+header {
     pointer-events: none;
     mix-blend-mode: multiply;
     position: fixed;
     z-index: 5;
-    top: 96px;
+    top: 48px;
     left: 0;
     right: 0;
-    .header-content{
+
+    .header-content {
         z-index: inherit;
         height: inherit;
         display: flex;
         justify-content: space-between;
         align-items: center;
         overflow: hidden;
-        padding: 0 88px 0 96px;
-        .left-part{
+        padding: 0 44px 0 48px;
+
+        .left-part {
             pointer-events: auto;
             display: flex;
             flex-direction: row;
             align-items: center;
             z-index: inherit;
         }
-        .right-part{
+
+        .right-part {
             pointer-events: auto;
             display: flex;
             flex-direction: row;
             align-items: center;
             z-index: inherit;
-            .hamburger-btn{
+
+            .hamburger-btn {
                 border: none;
                 background: none;
                 outline: none;
@@ -147,31 +188,76 @@ header{
                 font-size: 1rem;
                 color: #000000;
                 font: inherit;
-                font-variation-settings: "wght" 800,"wdth" 125;
+                font-variation-settings: "wght" 800, "wdth" 125;
                 padding: 0;
             }
         }
-        ul{
+
+        ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
             align-items: center;
-            li{
+
+            li {
                 margin-left: 24px;
             }
         }
-        svg{
+
+        svg {
             cursor: pointer;
         }
     }
 }
 
-@media only screen and ( max-width: 768px){
-    header{
+.main{
+    background-color: #f6ce91;    
+    width: 100%;
+    position: relative;
+    border-radius: 4px;
+    height: 100vh;
+    .projects{   
+        padding: 5% 4%;
+        h2{
+            font-size: 4rem;
+            color: #ffc061;
+            @include retro-shadow($colors);
+
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    header {
         top: 24px;
-        .header-content{
+
+        .header-content {
             padding: 0 22px 0 24px;
         }
     }
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #784776 transparent;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #784776;
+    border-radius: 10px;
+    border: 3px solid transparent;
+  }
