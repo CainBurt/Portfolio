@@ -1,9 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faMoon, faBars, faSun } from '@fortawesome/free-solid-svg-icons'
-import House from './assets/home.svg?react'
-import Moon from './assets/moon.svg?react'
-import Sun from './assets/sun.svg?react'
-import Menu from './assets/menu-navigation.svg?react'
+import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
 export default function Navbar() {
@@ -22,35 +19,20 @@ export default function Navbar() {
     return <header>
         <div className="header-content">
             <div className="left-part" style={{display: "flex", transform: "none"}}>
-                <div className="logo">
-                    <a href="/">
-                        <span className="visually-hidden">Home</span>
-                        <House style={{ height: '40px' }}/>
-                    </a>
-                </div>
-                <h5 className="full-identity" style={{display: "none", transform: "translateY(-100px) translateZ(0px)"}}>
-                    <span className="fullname">Cain Burt</span>
-                </h5>
+                <a href="https://www.linkedin.com/in/cain-burt/" target="_BLANK" >
+                    <FontAwesomeIcon icon={ faLinkedinIn } size="2x" />
+                </a>
+                <a href="https://github.com/CainBurt" target="_BLANK" >
+                    <FontAwesomeIcon icon={ faGithub } size="2x" />
+                </a>
             </div>
             
             <div className="right-part" style={{display: "flex", transform: "none"}}>
                 <ul>
-
                     <li className="theme-switch" style={{display: "block", transform: "none",}}>
-                     
-                        <Moon 
+                        <FontAwesomeIcon icon={faMoon} size="2x" 
                             onClick={() => (isLightMode ? setDarkMode() : setLightMode())}
                         />
-
-                        
-                    </li>
-                    <li>
-                        <button className="hamburger-btn" aria-label="Open menu">
-                            <div style={{transform: "none"}}>
-                                <Menu/>
-                      
-                            </div>
-                        </button>
                     </li>
                 </ul>
             </div>
