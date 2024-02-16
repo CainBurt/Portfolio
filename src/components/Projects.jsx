@@ -1,5 +1,4 @@
 import React from 'react';
-import { projectsData } from '../lib/data.jsx';
 import Project from './Project.jsx';
 
 export default function Projects(props) {
@@ -8,10 +7,8 @@ export default function Projects(props) {
     <section id="projects" className="projects" >
     <h2> { props.title } </h2>
       <div className="project-listing">
-        {projectsData.map((project, index) => (
-          <div key={index} className="project-small">
-            <Project {...project} />
-          </div>
+        {props.data.map((project, index) => (
+            <Project key={ index } {...project} />
         ))}
       </div>
     </section>

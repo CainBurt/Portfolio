@@ -88,6 +88,7 @@ body {
     transform-origin: 13px 25px;
     fill: var(--circle-one);
     stroke: var(--stroke);
+    stroke-width: 0.2;
 }
 
 .in-top {
@@ -95,6 +96,7 @@ body {
     transform-origin: 13px 25px;
     fill: var(--circle-two);
     stroke: var(--stroke);
+    stroke-width: 0.2;
 }
 
 .out-bottom {
@@ -102,6 +104,7 @@ body {
     transform-origin: 84px 93px;
     fill: var(--circle-three);
     stroke: var(--stroke);
+    stroke-width: 0.2;
 }
 
 .in-bottom {
@@ -109,6 +112,7 @@ body {
     transform-origin: 84px 93px;
     fill: var(--circle-four);
     stroke: var(--stroke);
+    stroke-width: 0.2;
 }
 
 
@@ -326,7 +330,9 @@ header {
                         cursor: pointer;
                         border-radius: 16px;
                     }
-                    
+                    p:not(:first-of-type){
+                        margin: 0;
+                    }
                 }
                 .icons{
                     display: flex;

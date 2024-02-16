@@ -12,7 +12,17 @@ export default function Projects(
         pageUrl
     }
 ){
-    return <>
+    const handleRedirect = () => {
+        if (pageUrl) {
+            window.open(pageUrl, '_BLANK');
+        }else if (repoUrl) {
+            window.open(repoUrl, '_BLANK');
+        }
+    };
+    const handleIconClick = (e) => {
+        e.stopPropagation(); 
+    };
+    return  <div onClick={ handleRedirect } className="project-small">
         <img src={ imageUrl } />
         <div className="sub-text">
             <h3>{ title }</h3>
@@ -21,16 +31,18 @@ export default function Projects(
                     <span key={index}>{ tag }</span>
                 ))}
             </div>
-            <p>{ description }</p>
-            <div className="icons">
-            {repoUrl && (
-                <a href={ repoUrl } target="_BLANK"><FontAwesomeIcon icon={ faGithub } /></a>
-            )}
-            {pageUrl && (
-                <a href={ pageUrl } target="_BLANK"><FontAwesomeIcon icon={ faUpRightFromSquare } /></a>
-            )}
-            </div>
+            {description.split('\n').map((line, index) => (
+                <p key={index}>{line}</p>
+            ))}
+            
         </div>
-    
-    </>          
+        <div className="icons">
+            {repoUrl && (
+                <a href={ repoUrl } target="_BLANK"><FontAwesomeIcon icon={ faGithub } onClick={ handleIconClick } /></a>
+            )}
+            {/* {pageUrl && (
+                <a href={ pageUrl } target="_BLANK"><FontAwesomeIcon icon={ faUpRightFromSquare } /></a>
+            )} */}
+        </div>
+    </div>        
 }
