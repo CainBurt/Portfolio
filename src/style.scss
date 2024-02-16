@@ -59,7 +59,9 @@ body {
     margin: 0;
     // overflow: hidden;
     background: var(--background-color);
-    color: var(--text-color)
+    color: var(--text-color);
+    overflow-x: hidden;
+
 }
 
 .canvas,
@@ -287,6 +289,9 @@ header {
             font-size: 4rem;
             color: #ffc061;
             @include retro-shadow($colors);
+            @media only screen and (max-width: 768px) {
+                font-size: 2.5rem;
+            }
 
         }
         .project-listing{
