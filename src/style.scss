@@ -17,12 +17,28 @@ $stroke: #563e2e;
 html[data-theme='light'] {
     --background-color: #F5ADC1;
     --text-color: #2b2b33;
-
+    --circle-one: #89379D;
+    --circle-two: #EB690F;
+    --circle-three: #ECC11B;
+    --circle-four: #f6ce91;
+    --stroke: #243763;
+    --main-background: #f6ce91;
+    --card-background: #F5ADC1;
+    --shaddow: #AD8E70;
 }
 
 html[data-theme='dark'] {
     --background-color: #2b2b33;
     --text-color: #f3f2f9;
+    --circle-one: #545456;
+    --circle-two: #6f6f82;
+    --circle-three: #545456;
+    --circle-four: #6f6f82;
+    --stroke: #000000;
+    --main-background: #545456;
+    --card-background: #9797aa;
+    --shaddow: #444445;
+
 }
 
 html,
@@ -70,21 +86,29 @@ body {
 .out-top {
     animation: rotate 20s linear infinite;
     transform-origin: 13px 25px;
+    fill: var(--circle-one);
+    stroke: var(--stroke);
 }
 
 .in-top {
     animation: rotate 10s linear infinite;
     transform-origin: 13px 25px;
+    fill: var(--circle-two);
+    stroke: var(--stroke);
 }
 
 .out-bottom {
     animation: rotate 25s linear infinite;
     transform-origin: 84px 93px;
+    fill: var(--circle-three);
+    stroke: var(--stroke);
 }
 
 .in-bottom {
     animation: rotate 15s linear infinite;
     transform-origin: 84px 93px;
+    fill: var(--circle-four);
+    stroke: var(--stroke);
 }
 
 
@@ -160,6 +184,7 @@ header {
         align-items: center;
         overflow: hidden;
         padding: 0 44px 0 48px;
+        overflow: visible;
 
         .left-part {
             pointer-events: auto;
@@ -176,18 +201,6 @@ header {
             flex-direction: row;
             align-items: center;
             z-index: inherit;
-
-            .hamburger-btn {
-                border: none;
-                background: none;
-                outline: none;
-                cursor: pointer;
-                font-size: 1rem;
-                color: #000000;
-                font: inherit;
-                font-variation-settings: "wght" 800, "wdth" 125;
-                padding: 0;
-            }
         }
 
         ul {
@@ -201,11 +214,22 @@ header {
                 margin-left: 24px;
             }
         }
-
-        svg {
-            cursor: pointer;
-            color: var(--text-color);
+        .icon-wrapper{
+            color: var(--stroke);
+            background-color: var(--background-color);
+            height: 45px;
+            border: 3px solid ;
+            border-radius: 100%;
+            box-shadow: 4px 2px 0px -2px var(--shaddow), 4px 2px 0px 0px var(--stroke);
+            svg {
+                margin: auto;
+                padding: 7px;
+                cursor: pointer;
+                color: var(--text-color);
+                aspect-ratio: 1/1;
+            }
         }
+        
     }
 }
 
@@ -246,7 +270,7 @@ header {
 //   }
 
 .main{
-    background-color: #f6ce91;    
+    background-color: var(--main-background);    
     width: 100%;
     position: relative;
     border-radius: 4px;
@@ -265,8 +289,9 @@ header {
             z-index: 0;
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             flex-wrap: wrap;
+            gap: 10px;
             .project-small{
                 display: flex;
                 flex-direction: column;
@@ -274,11 +299,12 @@ header {
                 border-radius: 10px;
                 overflow: hidden;
                 margin: 10px;
-                color: #243763;
-                background-color: #F5ADC1;
-                box-shadow: 10px 10px #AD8E70, 10px 10px 0px 4px #243763;;
+                color: var(--stroke);
+                background-color: var(--card-background);
+                box-shadow: 10px 10px var(--shaddow), 10px 10px 0px 4px var(--stroke);
                 transition: all 0.2s linear;
                 border: 4px solid ;
+                text-decoration: none;
                 &:hover{
                     // scale: 1.03;
                     translate: 0px -10px; ;
@@ -300,18 +326,20 @@ header {
                         cursor: pointer;
                         border-radius: 16px;
                     }
-                    .icons{
-                        display: flex;
-                        gap: 10px;
-                        justify-content: flex-end;
-                        margin: 10px 0px;
-                        svg{
-                            font-size: 1rem;
-                            color: #243763;
-                            transition: all 0.2s linear;
-                            &:hover{
-                                color: #ffffff;
-                            }
+                    
+                }
+                .icons{
+                    display: flex;
+                    gap: 10px;
+                    justify-content: flex-end;
+                    margin: auto 10px 10px 10px;
+                    margin-top: auto;
+                    svg{
+                        font-size: 2rem;
+                        color: var(--stroke);
+                        transition: all 0.2s linear;
+                        &:hover{
+                            color: #ffffff;
                         }
                     }
                 }
