@@ -100,7 +100,7 @@ export const professional = [
     {
         title: 'Spreadshop Whitelabel Signup',
         description:
-        `Timeslot booking system for a spreacshop event \n
+        `Timeslot booking system for a spreadshop event \n
         To view use: \nusername: cain-burt \n password: cain-burt`,
         tags: ['Bespoke Wordpress', 'PHP', 'TWIG', 'SCSS', 'JS'],
         imageUrl: SpreadshopWhitelabel,
@@ -108,9 +108,9 @@ export const professional = [
         pageUrl: 'https://dev-3.cainburt.com/',
     },
     {
-        title: 'Razor Chrsitmas Landing Page',
+        title: 'Razor Christmas Landing Page',
         description:
-        `Landing pages for razor scooter campaings \n 
+        `Landing pages for razor scooter campaigns \n 
         To view use: \nusername: cain-burt \n password: cain-burt`,
         tags: ['HTML', 'CSS', 'JS'],
         imageUrl: Razor,
