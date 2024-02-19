@@ -5,7 +5,7 @@ import SpreadshopWhitelabel from '../assets/whitelabel.png'
 import Razor from '../assets/razor.png'
 import UKHouse from '../assets/ukhouse.png'
 
-import Palendar from '../assets/palendar.png'
+import JokesAPP from '../assets/jokestorage.png'
 import Portfolio from '../assets/portfolio-cain.png'
 import DataMining from '../assets/data-mining.png'
 import Battleships from '../assets/battleships.png'
@@ -13,12 +13,12 @@ import GoogleCloud from '../assets/google-cloud.png'
 import FinalProject from '../assets/final-project.png'
 export const personal = [
     {
-        title: 'Palendar - In Progress',
+        title: 'Joke Storage App',
         description:
-        'A small project to help friends or teams organise convienient times to plan a get together',
-        tags: ['React', 'NodeJS', 'SCSS'],
-        imageUrl: Palendar,
-        repoUrl: 'https://github.com/CainBurt/palendar',
+        'A small web app to perform CRUD operations on a database of jokes',
+        tags: ['C#', 'ASP.NET Core', 'MVC', 'SQL'],
+        imageUrl: JokesAPP,
+        repoUrl: 'https://github.com/CainBurt/Jokes',
         pageUrl: '',
     },
     {
