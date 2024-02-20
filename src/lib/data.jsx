@@ -33,7 +33,7 @@ export const personal = [
     {
         title: 'Final Year Project',
         description:
-        'A remote teamoworking tool to improve remote teamworking while applying software engineering practices',
+        'A remote teamworking tool to improve remote teamworking while applying software engineering practices',
         tags: ['PHP', 'HTML', 'CSS', 'JS'],
         imageUrl: FinalProject,
         repoUrl: 'https://github.com/CainBurt/Final-Year-Project',
